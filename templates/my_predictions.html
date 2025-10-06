@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Predictions</title>
+    <style>
+        body {
+            background-image: url('/static/te.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h2>My Manual Predictions</h2>
+    <table border="1">
+        <tr>
+            
+            <th>Email</th>
+            <th>Input Data</th>
+            <th>Prediction Result</th>
+            <th>Actual Result</th>
+            <th>Risk Level</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for row in predictions %}
+        <tr>
+            
+            <td>{{ row.email}}</td>
+            <td>{{ row.input_data }}</td>
+            <td>{{ row.prediction_result }}</td>
+            <td>{{ row.actual_result}}</td>
+            <td>{{'High Risk' if row.actual_result==yes else 'Low Risk'}}</td>
+            <td>{{ row.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Back to Home</a>
+</body>
+</html>

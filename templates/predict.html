@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>manual predict</title>
+<style>
+body {
+      background-image: url('static/te.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: inherit;
+    }
+
+    form {
+      background-color: rgb(118, 194, 194);
+      padding: 30px;
+      border-radius: 30px;
+      align-items: center;
+      width: 400px;
+    }
+
+    h2 {
+      font-size: xx-large;
+      font-style: inherit;
+      color: rgb(3, 40, 40);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h5 {
+      font-size: large;
+      font-style: inherit;
+      color: rgb(1, 39, 39);
+      display: block;
+      margin: 5px 0 2px 10px;
+      padding: 10px;
+      text-align: left;
+    }
+
+    input {
+      width: 87%;
+      padding: 10px;
+      border: none;
+      border-radius: 50px;
+      margin-bottom: 8px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      height: 20px;
+    }
+
+    button {
+      width: 100px;
+      padding: 10px;
+      border: none;
+      border-radius: 50px;
+      background-color: rgb(1, 39, 39);
+
+      color: rgb(118, 194, 194);
+      font-size: 16px;
+      cursor: pointer;
+      display: block;
+      margin: 5px; 
+    }
+
+    button:hover {
+    
+      background-color: rgb(0, 26, 26);
+    }
+
+p{
+text-align: center;
+color: rgb(0, 26, 26);
+
+}
+ </style>
+</head>
+
+<body>
+
+<center>
+<h2>Lung Cancer Form</h2>
+<form action="/predict" method="POST">
+
+  <h5>Age:</h5>
+  <input type="number" name="AGE" required><br>
+
+  <h5>Gender (1 = Male, 0 = Female):</h5>
+  <input type="number" name="GENDER" min="0" max="1" required><br>
+
+  <h5>Smoking (1 = Yes, 0 = No):</h5>
+  <input type="number" name="SMOKING" min="0" max="1" required><br>
+
+  <h5>Yellow Fingers (1 = Yes, 0 = No):</h5>
+  <input type="number" name="YELLOW_FINGERS" min="0" max="1" required><br>
+
+  <h5>Anxiety (1 = Yes, 0 = No):</h5>
+  <input type="number" name="ANXIETY" min="0" max="1" required><br>
+
+  <h5>Peer Pressure (1 = Yes, 0 = No):</h5>
+  <input type="number" name="PEER_PRESSURE" min="0" max="1" required><br>
+
+  <h5>Chronic Disease (1 = Yes, 0 = No):</h5>
+  <input type="number" name="CHRONIC_DISEASE" min="0" max="1" required><br>
+
+  <h5>Fatigue (1 = Yes, 0 = No):</h5>
+  <input type="number" name="FATIGUE" min="0" max="1" required><br>
+
+  <h5>Allergy (1 = Yes, 0 = No):</h5>
+  <input type="number" name="ALLERGY" min="0" max="1" required><br>
+
+  <h5>Wheezing (1 = Yes, 0 = No):</h5>
+  <input type="number" name="WHEEZING" min="0" max="1" required><br>
+
+  <h5>Alcohol Consuming (1 = Yes, 0 = No):</h5>
+  <input type="number" name="ALCOHOL_CONSUMING" min="0" max="1" required><br>
+
+  <h5>Coughing of Blood (1 = Yes, 0 = No):</h5>
+  <input type="number" name="COUGHING_OF_BLOOD" min="0" max="1" required><br>
+
+  <h5>Shortness of Breath (1 = Yes, 0 = No):</h5>
+  <input type="number" name="SHORTNESS_OF_BREATH" min="0" max="1" required><br>
+
+  <h5>Swallowing Difficulty (1 = Yes, 0 = No):</h5>
+  <input type="number" name="SWALLOWING_DIFFICULTY" min="0" max="1" required><br>
+
+  <h5>Chest Pain (1 = Yes, 0 = No):</h5>
+  <input type="number" name="CHEST_PAIN" min="0" max="1" required><br><br>
+
+
+ {% if accuracy %}
+    <p>Accuracy: {{ accuracy }}%</p>
+{% else %}
+    <p>please enter the manual data for Prediction</p>
+{% endif %}
+{% if error %}
+    <div style="color: red;"><strong>{{ error }}</strong></div>
+{% endif %}
+
+  <button type="submit" value="Submit">predict</button>
+</form>
+</center>
+
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>home Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+
+    body {
+      background-image: url('static/te.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      background-color: rgb(118, 194, 194);
+      padding: 30px;
+      border-radius: 30px;
+      width: 350px;
+      text-align: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      grid-column: 1 / 3;
+      font-size: x-large;
+      color: rgb(13, 66, 66);
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 120px;
+      height: 45px;
+      border: none;
+      border-radius: 50px;
+      background-color: rgba(13, 66, 66);
+      color: rgb(118, 194, 194);
+      font-size: medium;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: rgb(10, 50, 50);
+    }
+
+    .disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <h1>Welcome to the Lung Cancer detection system</h1>
+
+    <!-- Always enabled -->
+    <button type="button" onclick="location.href='/fileup'">Train File</button>
+    <button type="button" onclick="location.href='/my-predictions'">My Prediction</button>
+
+    <!-- Conditionally enabled -->
+    {% if session.get('trained') %}
+      <button type="button" onclick="location.href='/predict'">Predict</button>
+      <button type="button" onclick="location.href='/performance'">Performance</button>
+   
+    {% else %}
+      <button type="button" class="disabled">Predict</button>
+      <button type="button" class="disabled">Performance</button>
+     
+    {% endif %}
+  </form>
+</body>
+</html>
